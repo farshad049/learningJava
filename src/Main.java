@@ -1,13 +1,17 @@
+import GenericClass.MyGenericClass;
+import Lambda.MyFrame;
 import Lambda.MyInterface;
 import innerClass.AnonymousInnerClass;
 import openNewWindow.LaunchPage;
+import serialization.User;
 
+import java.io.*;
 import java.util.HashMap;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 /*        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.printf("Hello and welcome!");
@@ -648,13 +652,77 @@ public class Main {
 //        countries.containsKey("england");
 
 
-        MyInterface myInterface = (x, c) ->{
+
+
+
+        /*MyInterface myInterface = (x, c) ->{
             System.out.println("hello world");
             System.out.println("it is s good day " + x + c);
         };
 
 
-        myInterface.message("taghi", '!');
+        myInterface.message("taghi", '!');*/
+
+
+
+
+
+        //generics
+        /*MyGenericClass<Integer> myInt= new MyGenericClass<>(1);
+        MyGenericClass myDouble= new MyGenericClass("taghi");
+
+
+        System.out.println(myDouble.getValue());*/
+
+
+
+
+
+
+
+        //serialization
+
+//        User user = new User();
+//
+//        user.name="farshad";
+//        user.password="hallo";
+//
+//        FileOutputStream fileOut = new FileOutputStream("src/serialization/UserInfo.ser");
+//        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//        out.writeObject(user);
+//        out.close();
+//        fileOut.close();
+//
+//        System.out.println("saved! ");
+
+
+
+
+        //de-serialization
+
+        User user= null;
+
+        FileInputStream fileIn = new FileInputStream("C:\\Users\\User\\IdeaProjects\\untitled\\src\\serialization\\UserInfo.ser");
+        ObjectInputStream in= new ObjectInputStream(fileIn);
+        user = (User) in.readObject();
+        in.close();
+        fileIn.close();
+
+        System.out.println(user.name);
+        System.out.println(user.password);
+        user.sayHello();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
